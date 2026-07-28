@@ -186,7 +186,7 @@ export default function CoursePage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: 'var(--header-h)' }}>
+      <main>
 
         {/* ── Course Hero ──────────────────────────────── */}
         <section style={{ backgroundColor: 'var(--cream)', padding: '72px 0 80px' }}>
@@ -261,7 +261,7 @@ export default function CoursePage() {
         </section>
 
         {/* ── Theta Healing ─────────────────────────── */}
-        <section id="thetahealing" style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
+        <section id="healing-course" style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
           <div className="container">
             <div style={{
               display: 'grid',
@@ -296,7 +296,7 @@ export default function CoursePage() {
         </section>
 
         {/* ── Perfumer ──────────────────────────────── */}
-        <section id="perfumer" style={{ backgroundColor: 'var(--beige)', padding: '80px 0 96px' }}>
+        <section id="perfumer-course" style={{ backgroundColor: 'var(--beige)', padding: '80px 0 96px' }}>
           <div className="container">
             <div style={{
               display: 'grid',
@@ -331,7 +331,7 @@ export default function CoursePage() {
         </section>
 
         {/* ── Aromatherapy ───────────────────────────── */}
-        <section id="aromatherapist" style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
+        <section id="aromatherapy-course" style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
           <div className="container">
             <div style={{
               display: 'grid',
@@ -400,7 +400,7 @@ export default function CoursePage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }} className="tm-grid">
               {testimonials.map(t => (
                 <div key={t.name} style={{
-                  backgroundColor: 'var(--white)',
+                  backgroundColor: '#ECE7DA',
                   padding: '32px 28px',
                   borderRadius: '2px',
                 }}>

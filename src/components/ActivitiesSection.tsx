@@ -2,36 +2,37 @@ import Image from 'next/image';
 
 const activities = [
   {
-    title: '希塔療癒體驗工作坊',
-    date: '2025.08',
-    image: '/images/kyp/activity-1.png',
-    href: 'https://www.weekielife.com/',
+    title: '【翻轉信念・改變人生】希塔療癒師認證課入門〈基礎 DNA〉｜線上直播＋國際證書，打開自癒力新人生',
+    tag: '療癒師',
+    image: '/images/activity-1.png',
+    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
   },
   {
-    title: '法式精油調香體驗課',
-    date: '2025.08',
-    image: '/images/kyp/section-img-1.png',
-    href: 'https://www.weekielife.com/',
+    title: '【你也能擁有法式專屬香氣】法國 F.C.A. 精油調香師入門課｜9小時帶你從芳療小白變斜槓高手',
+    tag: '調香師',
+    image: '/images/activity-2.png',
+    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
   },
   {
-    title: '香氛療癒創業分享會',
-    date: '2025.09',
-    image: '/images/kyp/activity-3.png',
-    href: 'https://www.weekielife.com/',
+    title: '【拿下國際芳療師證書】美國 NAHA Level 1 芳療師認證課｜線上學習＋國際證書',
+    tag: '芳療師',
+    image: '/images/activity-3.png',
+    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
   },
 ];
 
 export default function ActivitiesSection() {
   return (
-    <section style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
+    <section style={{ backgroundColor: '#ECE7DA', padding: '80px 0 96px' }}>
       <div className="container">
         <h2 style={{
-          fontSize: 'clamp(24px, 3vw, 36px)',
-          fontWeight: '400',
+          fontSize: 'clamp(26px, 3.6vw, 44px)',
+          fontWeight: '500',
           letterSpacing: '0.08em',
           textAlign: 'center',
           marginBottom: '52px',
-          color: 'var(--text)',
+          color: '#38290F',
+          fontFamily: 'var(--font-noto-serif-tc), serif',
         }}>
           最新活動
         </h2>
@@ -39,7 +40,7 @@ export default function ActivitiesSection() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '28px',
+          gap: '32px',
         }} className="act-grid">
           {activities.map(act => (
             <a
@@ -53,8 +54,7 @@ export default function ActivitiesSection() {
                 position: 'relative',
                 aspectRatio: '4/3',
                 overflow: 'hidden',
-                borderRadius: '2px',
-                marginBottom: '16px',
+                marginBottom: '18px',
               }}>
                 <Image
                   src={act.image}
@@ -64,40 +64,42 @@ export default function ActivitiesSection() {
                   className="act-img"
                 />
               </div>
-              <p style={{
-                fontSize: '12px',
-                color: 'var(--text-muted)',
-                letterSpacing: '0.1em',
-                marginBottom: '8px',
-              }}>
-                {act.date}
-              </p>
               <h3 style={{
-                fontSize: '16px',
+                fontSize: '19px',
                 fontWeight: '400',
-                letterSpacing: '0.04em',
-                color: 'var(--text)',
-                lineHeight: '1.5',
+                letterSpacing: '0.03em',
+                color: '#38290F',
+                lineHeight: '1.8',
+                marginBottom: '10px',
+                fontFamily: 'var(--font-noto-sans-tc), sans-serif',
               }}>
                 {act.title}
               </h3>
+              <p style={{
+                fontSize: '17px',
+                fontWeight: '300',
+                color: '#C4A040',
+                letterSpacing: '0.06em',
+              }}>
+                {act.tag}
+              </p>
             </a>
           ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '52px' }}>
+        <div style={{ textAlign: 'center', marginTop: '56px' }}>
           <a
-            href="https://www.weekielife.com/"
+            href="https://forms.gle/Sg3HV5Ec5J8eiQdV8"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-block',
-              padding: '12px 40px',
-              border: '1px solid var(--text)',
-              fontSize: '14px',
-              letterSpacing: '0.1em',
-              color: 'var(--text)',
-              transition: 'background 0.25s, color 0.25s',
+              padding: '13px 44px',
+              border: '1px solid #38290F',
+              fontSize: '17px',
+              letterSpacing: '0.12em',
+              color: '#38290F',
+              backgroundColor: 'transparent',
             }}
           >
             查看更多活動
@@ -108,10 +110,10 @@ export default function ActivitiesSection() {
       <style>{`
         .act-img:hover { transform: scale(1.04); }
         @media (max-width: 1024px) {
-          .act-grid { gap: 20px !important; }
+          .act-grid { gap: 24px !important; }
         }
         @media (max-width: 640px) {
-          .act-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .act-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
         }
       `}</style>
     </section>

@@ -1,31 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #F7F4EF;
-  --beige: #EDE8DF;
+  --site-bg: #ECE7DA;
+  --site-text: #38290F;
+  --cream: #ECE7DA;
+  --beige: #E3DDD0;
   --gold: #B8975A;
   --kate-gold: #C4A040;
-  --text: #1A1A1A;
-  --text-muted: #777777;
+  --text: #38290F;
+  --text-muted: #7a6a52;
   --white: #FFFFFF;
-  --border: #E0D8CF;
+  --border: #D6CFBF;
   --footer-bg: #3A3530;
   --header-h: 72px;
   --header-h-mobile: 64px;
-  --section-cream: #f3eee3;
-  --heading-brown: #4a3215;
+  --section-cream: #ECE7DA;
+  --heading-brown: #38290F;
   --body-brown: #5f5548;
   --muted-brown: #786e61;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
 
-body {
+html {
+  scroll-behavior: smooth;
+  background-color: #ECE7DA;
+}
+
+body,
+main,
+#__next {
   font-family: var(--font-noto-sans-tc), 'Noto Sans TC', sans-serif;
-  color: var(--text);
-  background: var(--cream);
+  color: #38290F;
+  background-color: #ECE7DA;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -96,7 +105,7 @@ a { text-decoration: none; color: inherit; }
   position: relative;
   width: 100%;
   height: var(--header-h);
-  background: #ffffff;
+  background: #ECE7DA;
   z-index: 100;
 }
 
@@ -253,8 +262,8 @@ a { text-decoration: none; color: inherit; }
   display: block;
   margin: 16px 20px;
   padding: 14px 28px;
-  background: #ffffff;
-  color: #5a4934;
+  background: #ECE7DA;
+  color: #38290F;
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.06em;

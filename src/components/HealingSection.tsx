@@ -3,78 +3,76 @@ import Image from 'next/image';
 const services = [
   {
     title: '台北實體調香體驗課',
-    desc: '以天然精油為媒介，調製屬於你的專屬香氣，找回自己的獨特氣息',
+    desc: '以氣味描繪靈魂，調出屬於你的獨特香氣',
     href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
-    image: '/images/kyp/section-img-1.png',
+    icon: <Image src="/images/FlowerTulip.png" alt="FlowerTulip" width={48} height={48} style={{ objectFit: 'contain' }} />,
   },
   {
     title: '療癒手作體驗',
-    desc: '透過手作香氛的過程，讓身心在自然植物的氣息中得到深度放鬆',
+    desc: '透過香氛創作，療癒情緒、連結內在，找回平靜與力量',
     href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
-    image: '/images/kyp/portrait-2.png',
+    icon: <Image src="/images/HandHeart.png" alt="HandHeart" width={48} height={48} style={{ objectFit: 'contain' }} />,
   },
   {
     title: '香氛療癒諮詢',
-    desc: '一對一陪伴你探索氣味與情緒的連結，找到最適合你的療癒路徑',
+    desc: '結合芳療與潛意識探索，量身調配香氛配方，療癒情緒與身心失衡',
     href: 'https://calendly.com/tingwenlin/1-1',
-    image: '/images/kyp/portrait-3.png',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        {/* Heart outline */}
+        <path d="M24 38 C24 38 8 28 8 18 C8 13 12 9 17 9 C20 9 22 11 24 13 C26 11 28 9 31 9 C36 9 40 13 40 18 C40 28 24 38 24 38Z" />
+        {/* Pulse line */}
+        <polyline points="12,24 17,24 20,18 23,30 26,22 29,24 36,24" />
+      </svg>
+    ),
   },
 ];
 
 export default function HealingSection() {
   return (
-    <section>
-      {/* Full-width image banner */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '420px',
-        overflow: 'hidden',
-      }} className="heal-banner">
+    <section style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Background image */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image
-          src="/images/kyp/landscape-2.png"
+          src="/images/full-banner.png"
           alt="找回自己"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(20,12,4,0.32)',
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          textAlign: 'center',
-          color: 'var(--white)',
-          padding: '24px',
-        }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,12,4,0.45)' }} />
+      </div>
+
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 1, padding: '72px 0 80px' }}>
+        {/* Title */}
+        <div style={{ textAlign: 'center', marginBottom: '52px', padding: '0 20px' }}>
           <h2 style={{
-            fontSize: 'clamp(26px, 4vw, 44px)',
-            fontWeight: '400',
+            fontSize: 'clamp(22px, 3vw, 36px)',
+            fontWeight: '500',
             letterSpacing: '0.08em',
-            marginBottom: '16px',
+            color: '#ffffff',
+            marginBottom: '14px',
+            fontFamily: 'var(--font-noto-serif-tc), serif',
           }}>
             找回自己、呵護自己
           </h2>
           <p style={{
-            fontSize: 'clamp(13px, 1.8vw, 16px)',
-            fontWeight: '300',
-            letterSpacing: '0.1em',
-            opacity: 0.9,
+            fontSize: '18px',
+            fontWeight: '400',
+            letterSpacing: '0.08em',
+            color: 'rgba(255,255,255,0.8)',
+            fontFamily: 'var(--font-noto-sans-tc), sans-serif',
           }}>
-            每一次深呼吸的芬芳，都是回到自己心底的旅程
+            每一次深層對話，都是回到自己的起點
           </p>
         </div>
-      </div>
 
-      {/* 3 service cards */}
-      <div style={{ backgroundColor: 'var(--cream)', padding: '64px 0 80px' }}>
+        {/* 3 cards */}
         <div className="container">
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '28px',
+            gap: '20px',
           }} className="heal-grid">
             {services.map(service => (
               <a
@@ -82,38 +80,41 @@ export default function HealingSection() {
                 href={service.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  aspectRatio: '1/1',
+                  padding: '32px',
+                  border: 'none',
+                  background: 'rgba(255,255,255,0.1)',
+                  backdropFilter: 'blur(4px)',
+                  transition: 'background 0.3s',
+                }}
+                className="heal-card"
               >
-                <div style={{
-                  position: 'relative',
-                  aspectRatio: '3/4',
-                  overflow: 'hidden',
-                  borderRadius: '2px',
-                  marginBottom: '20px',
-                }}>
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top', transition: 'transform 0.5s ease' }}
-                    className="heal-card-img"
-                  />
-                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>{service.icon}</div>
                 <h3 style={{
-                  fontSize: '17px',
-                  fontWeight: '500',
-                  letterSpacing: '0.05em',
-                  marginBottom: '10px',
-                  color: 'var(--text)',
+                  fontSize: '22px',
+                  fontWeight: '300',
+                  letterSpacing: '0.18em',
+                  marginBottom: '14px',
+                  color: '#ffffff',
+                  fontFamily: 'var(--font-noto-sans-tc), sans-serif',
+                  textAlign: 'center',
                 }}>
                   {service.title}
                 </h3>
                 <p style={{
-                  fontSize: '13px',
+                  fontSize: '16px',
                   fontWeight: '300',
-                  color: 'var(--text-muted)',
-                  lineHeight: '1.8',
-                  letterSpacing: '0.03em',
+                  color: 'rgba(255,255,255,0.75)',
+                  lineHeight: '1.9',
+                  letterSpacing: '0.04em',
+                  fontFamily: 'var(--font-noto-sans-tc), sans-serif',
+                  textAlign: 'center',
                 }}>
                   {service.desc}
                 </p>
@@ -124,13 +125,9 @@ export default function HealingSection() {
       </div>
 
       <style>{`
-        .heal-card-img:hover { transform: scale(1.04); }
-        @media (max-width: 1024px) {
-          .heal-grid { gap: 20px !important; }
-        }
+        .heal-card:hover { background: rgba(255,255,255,0.16) !important; }
         @media (max-width: 640px) {
-          .heal-banner { height: 280px !important; }
-          .heal-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .heal-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
         }
       `}</style>
     </section>

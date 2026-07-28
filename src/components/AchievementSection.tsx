@@ -1,19 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
-
-const items = [
-  { label: '專業培訓', href: '/course#course' },
-  { label: '講師培訓', href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8', external: true },
-  { label: '創業陪跑', href: 'https://forms.gle/SaM6QgXC5JmsxwJW7', external: true },
-];
 
 export default function AchievementSection() {
   return (
-    <section style={{ backgroundColor: 'var(--cream)', padding: '80px 0 96px' }}>
+    <section className="brand-belief-section" style={{ padding: '80px 0 96px' }}>
       <div className="container">
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '55% 45%',
+          gridTemplateColumns: '68% 32%',
           gap: '64px',
           alignItems: 'center',
         }} className="ach-grid">
@@ -21,73 +14,34 @@ export default function AchievementSection() {
           <div>
             <h2 style={{
               fontSize: 'clamp(22px, 3vw, 34px)',
-              fontWeight: '400',
+              fontWeight: '500',
               letterSpacing: '0.06em',
               lineHeight: '1.4',
               marginBottom: '20px',
-              color: 'var(--text)',
+              color: 'var(--heading-brown)',
+              fontFamily: 'var(--font-noto-serif-tc), "Source Han Serif TC", serif',
             }}>
-              成就自己｜打造你的香氛療癒斜槓人生
+              我們相信，每個人都值得一段香氛療癒旅程
             </h2>
             <p style={{
-              fontSize: '15px',
-              fontWeight: '300',
-              color: 'var(--text-muted)',
+              fontSize: '18px',
+              fontWeight: '400',
+              color: 'var(--body-brown)',
               letterSpacing: '0.05em',
               lineHeight: '1.9',
               marginBottom: '40px',
+              fontFamily: 'var(--font-noto-sans-tc), "Source Han Sans TC", sans-serif',
             }}>
-              從零基礎到國際認證，從香氣美學學到身心療癒，找到你精彩的潛力，建立專業、創造價值
+              『你喜歡的香氛，也許正是你靈魂的提示』<br />
+              讓香氛療癒陪你遇見無限可能的自己。<br /><br />
+              在創業、斜槓、追求財富自由的路上，透過香氛療癒讓你擁有滿滿的正能量與動力，陪你找到下一個可能。
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-              {items.map(item =>
-                item.external ? (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '18px 0',
-                      borderBottom: '1px solid var(--border)',
-                      fontSize: '16px',
-                      color: 'var(--text)',
-                      letterSpacing: '0.04em',
-                    }}
-                  >
-                    <span>{item.label}</span>
-                    <span style={{ fontSize: '18px', color: 'var(--gold)' }}>→</span>
-                  </a>
-                ) : (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '18px 0',
-                      borderBottom: '1px solid var(--border)',
-                      fontSize: '16px',
-                      color: 'var(--text)',
-                      letterSpacing: '0.04em',
-                    }}
-                  >
-                    <span>{item.label}</span>
-                    <span style={{ fontSize: '18px', color: 'var(--gold)' }}>→</span>
-                  </Link>
-                )
-              )}
-            </div>
           </div>
 
           {/* Right: image */}
           <div style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden' }}>
             <Image
-              src="/images/kyp/activity-2.png"
+              src="/images/Image (1)拷貝.png"
               alt="香氛療癒"
               fill
               style={{ objectFit: 'cover', objectPosition: 'center' }}

@@ -1,103 +1,134 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const BOOKING_URL = 'https://calendly.com/tingwenlin/1-1';
 
+const dropdownItems = [
+  { label: '療癒師認證課', href: '/course#healing-course' },
+  { label: '調香師認證課', href: '/course#perfumer-course' },
+  { label: '芳療師認證課', href: '/course#aromatherapy-course' },
+  { label: '常見問題', href: '/course#faq' },
+];
+
+const mobileMenuItems = [
+  { label: '培訓課程', href: '/course' },
+  { label: '療癒師認證課', href: '/course#healing-course' },
+  { label: '調香師認證課', href: '/course#perfumer-course' },
+  { label: '芳療師認證課', href: '/course#aromatherapy-course' },
+  { label: '常見問題', href: '/course#faq' },
+];
+
+export default function Header() {
+  const [isCourseMenuOpen, setIsCourseMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const courseWrapRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click or Escape
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    function handleOutsideClick(e: MouseEvent) {
+      if (courseWrapRef.current && !courseWrapRef.current.contains(e.target as Node)) {
+        setIsCourseMenuOpen(false);
+      }
+    }
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setIsCourseMenuOpen(false);
+        setMobileOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
-
-  const navLinkStyle: React.CSSProperties = {
-    padding: '8px 16px',
-    fontSize: '15px',
-    color: 'var(--text)',
-    letterSpacing: '0.04em',
-    fontWeight: '400',
-  };
+  }, [mobileOpen]);
 
   return (
-    <header style={{
-      position: 'fixed',
-      top: 0, left: 0, right: 0,
-      zIndex: 200,
-      height: 'var(--header-h)',
-      backgroundColor: scrolled ? 'rgba(247,244,239,0.97)' : 'rgba(247,244,239,0.80)',
-      backdropFilter: 'blur(10px)',
-      borderBottom: `1px solid ${scrolled ? 'var(--border)' : 'transparent'}`,
-      transition: 'background-color 0.3s, border-color 0.3s',
-    }}>
-      <div className="container" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" style={{ flexShrink: 0 }}>
+    <header className="site-header">
+      <div className="hd-inner">
+        <Link href="/" className="hd-logo-link">
           <Image
-            src="/images/kyp/logo.png"
+            src="/images/logo.png"
             alt="InHealing 植覺療癒"
-            width={130}
-            height={36}
-            style={{ objectFit: 'contain', height: '36px', width: 'auto' }}
+            width={260}
+            height={69}
             priority
+            style={{ width: '130px', height: 'auto', objectFit: 'contain', objectPosition: 'left center' }}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '4px' }} className="hd-nav">
-          <Link href="/course#course" style={navLinkStyle}>
-            專業培訓
-          </Link>
+        <nav className="hd-nav">
+          <div
+            className="hd-course-wrap"
+            ref={courseWrapRef}
+            onMouseEnter={() => setIsCourseMenuOpen(true)}
+            onMouseLeave={() => setIsCourseMenuOpen(false)}
+          >
+            <button
+              className="hd-course-btn"
+              onClick={() => setIsCourseMenuOpen(v => !v)}
+              aria-expanded={isCourseMenuOpen}
+              aria-haspopup="menu"
+            >
+              培訓課程
+              <svg
+                className={`hd-chevron${isCourseMenuOpen ? ' open' : ''}`}
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M1 1l4 4 4-4" stroke="#7a6548" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {isCourseMenuOpen && (
+              <div className="hd-dropdown" role="menu">
+                {dropdownItems.map(item => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="hd-dropdown-item"
+                    role="menuitem"
+                    onClick={() => setIsCourseMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           <a
-            href="https://forms.gle/Sg3HV5Ec5J8eiQdV8"
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={navLinkStyle}
+            className="hd-book-btn"
           >
-            講師培訓
-          </a>
-          <a
-            href="https://forms.gle/SaM6QgXC5JmsxwJW7"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              marginLeft: '12px',
-              padding: '9px 24px',
-              backgroundColor: 'var(--gold)',
-              color: 'var(--white)',
-              fontSize: '14px',
-              letterSpacing: '0.06em',
-              borderRadius: '2px',
-              fontWeight: '400',
-            }}
-          >
-            創業陪跑
+            立即預約
           </a>
         </nav>
 
         {/* Hamburger */}
         <button
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="選單"
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '4px',
-            color: 'var(--text)',
-          }}
           className="hd-burger"
+          onClick={() => setMobileOpen(v => !v)}
+          aria-label={mobileOpen ? '關閉選單' : '開啟選單'}
+          aria-expanded={mobileOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            {menuOpen
+            {mobileOpen
               ? (<><line x1="4" y1="4" x2="20" y2="20" /><line x1="20" y1="4" x2="4" y2="20" /></>)
               : (<><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></>)
             }
@@ -106,68 +137,29 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div style={{
-          position: 'absolute',
-          top: '100%',
-          left: 0, right: 0,
-          backgroundColor: 'rgba(247,244,239,0.99)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid var(--border)',
-          padding: '8px 0 28px',
-        }}>
-          <div className="container" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/course#course" onClick={() => setMenuOpen(false)} style={{
-              padding: '16px 0',
-              fontSize: '16px',
-              color: 'var(--text)',
-              letterSpacing: '0.04em',
-              borderBottom: '1px solid var(--border)',
-            }}>
-              專業培訓
+      {mobileOpen && (
+        <nav className="hd-mobile-menu" aria-label="手機選單">
+          {mobileMenuItems.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="hd-mobile-item"
+              onClick={() => setMobileOpen(false)}
+            >
+              {item.label}
             </Link>
-            <a
-              href="https://forms.gle/Sg3HV5Ec5J8eiQdV8"
-              target="_blank" rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                padding: '16px 0',
-                fontSize: '16px',
-                color: 'var(--text)',
-                letterSpacing: '0.04em',
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              講師培訓
-            </a>
-            <a
-              href="https://forms.gle/SaM6QgXC5JmsxwJW7"
-              target="_blank" rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: 'inline-block',
-                marginTop: '20px',
-                padding: '14px 28px',
-                backgroundColor: 'var(--gold)',
-                color: 'var(--white)',
-                fontSize: '15px',
-                letterSpacing: '0.06em',
-                borderRadius: '2px',
-                textAlign: 'center' as const,
-              }}
-            >
-              創業陪跑
-            </a>
-          </div>
-        </div>
+          ))}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hd-mobile-book"
+            onClick={() => setMobileOpen(false)}
+          >
+            立即預約
+          </a>
+        </nav>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hd-nav { display: none !important; }
-          .hd-burger { display: flex !important; }
-        }
-      `}</style>
     </header>
   );
 }

@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
-import { Noto_Serif_TC, Cormorant_Garamond } from 'next/font/google';
+import { Noto_Serif_TC, Noto_Sans_TC, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 
 const notoSerifTC = Noto_Serif_TC({
   variable: '--font-noto-serif-tc',
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const notoSansTC = Noto_Sans_TC({
+  variable: '--font-noto-sans-tc',
+  subsets: ['latin'],
+  weight: ['300', '400'],
   display: 'swap',
 });
 
@@ -28,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-TW" className={`${notoSerifTC.variable} ${cormorant.variable}`}>
+    <html lang="zh-TW" className={`${notoSerifTC.variable} ${notoSansTC.variable} ${cormorant.variable}`}>
       <body>{children}</body>
     </html>
   );
