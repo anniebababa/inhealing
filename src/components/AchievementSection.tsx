@@ -21,7 +21,7 @@ export default function AchievementSection() {
               color: 'var(--heading-brown)',
               fontFamily: 'var(--font-noto-serif-tc), "Source Han Serif TC", serif',
             }}>
-              我們相信，每個人都值得一段香氛療癒旅程
+              我們相信，每個人都值得一段<br />香氛療癒旅程
             </h2>
             <p style={{
               fontSize: '18px',
@@ -34,12 +34,12 @@ export default function AchievementSection() {
             }}>
               『你喜歡的香氛，也許正是你靈魂的提示』<br />
               讓香氛療癒陪你遇見無限可能的自己。<br /><br />
-              在創業、斜槓、追求財富自由的路上，透過香氛療癒讓你擁有滿滿的正能量與動力，陪你找到下一個可能。
+              在創業、斜槓、追求財富自由的路上，透過香氛療癒讓你擁有<br />滿滿的正能量與動力，陪你找到下一個可能。
             </p>
           </div>
 
           {/* Right: image */}
-          <div style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden', marginLeft: '-160px', width: '88%' }}>
             <Image
               src="/images/Image (1)拷貝.png"
               alt="香氛療癒"

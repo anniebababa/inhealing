@@ -259,7 +259,7 @@ export default function CoursePage() {
         </section>
 
         {/* ── Course Selection Grid ─────────────────────── */}
-        <section style={{ backgroundColor: '#ECE7DA' }}>
+        <section id="course-selection" style={{ backgroundColor: '#ECE7DA' }}>
           {/* Title */}
           <div style={{ textAlign: 'center', padding: '52px 20px 40px' }}>
             <h2 style={{

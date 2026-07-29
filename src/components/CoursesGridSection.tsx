@@ -5,7 +5,7 @@ const cards = [
   {
     label: '專業培訓',
     image: '/images/hero-banner.png',
-    href: '/course',
+    href: '/course#course-selection',
     external: false,
     objectPosition: 'center center',
     span: 'large',
@@ -13,7 +13,7 @@ const cards = [
   {
     label: '講師培訓',
     image: '/images/section-img-1.png',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSeGJfK9PHI-leLCLf7f04zgvMqNZ_BImLslI6xCFFWUl7rWIw/viewform',
     external: true,
     objectPosition: 'center top',
     span: 'small',
@@ -21,7 +21,7 @@ const cards = [
   {
     label: '創業陪跑',
     image: '/images/section-img-2.png',
-    href: 'https://forms.gle/SaM6QgXC5JmsxwJW7',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSeZREfabsE1oAlIaIlpYGFs3-tWaqJXBegSna2HgGc1zxp0CA/viewform',
     external: true,
     objectPosition: 'center center',
     span: 'small',

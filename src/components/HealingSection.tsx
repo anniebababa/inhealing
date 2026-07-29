@@ -4,19 +4,19 @@ const services = [
   {
     title: '台北實體調香體驗課',
     desc: '以氣味描繪靈魂，調出屬於你的獨特香氣',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLScEYqUV8g5hfKy0fjxrCa6we_lPoROskKdG9YMdi-64lVwRLQ/viewform',
     icon: <Image src="/images/FlowerTulip.png" alt="FlowerTulip" width={48} height={48} style={{ objectFit: 'contain' }} />,
   },
   {
     title: '療癒手作體驗',
     desc: '透過香氛創作，療癒情緒、連結內在，找回平靜與力量',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSe2Q3y9GEXBFEF00SuvRLK6Zx99-lle3E67VHmXcyy0Mi1scg/viewform',
     icon: <Image src="/images/HandHeart.png" alt="HandHeart" width={48} height={48} style={{ objectFit: 'contain' }} />,
   },
   {
     title: '香氛療癒諮詢',
     desc: '結合芳療與潛意識探索，量身調配香氛配方，療癒情緒與身心失衡',
-    href: 'https://calendly.com/tingwenlin/1-1',
+    href: 'https://calendly.com/healingbar/one-on-one-with-kate?month=2026-07',
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         {/* Heart outline */}
@@ -39,7 +39,7 @@ export default function HealingSection() {
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,12,4,0.45)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,12,4,0.2)' }} />
       </div>
 
       {/* Content */}

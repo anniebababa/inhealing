@@ -5,19 +5,19 @@ const activities = [
     title: '【翻轉信念・改變人生】希塔療癒師認證課入門〈基礎 DNA〉｜線上直播＋國際證書，打開自癒力新人生',
     tag: '療癒師',
     image: '/images/activity-1.png',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://weekielife.com/blog/thetahealing-basic-dna-certification',
   },
   {
     title: '【你也能擁有法式專屬香氣】法國 F.C.A. 精油調香師入門課｜9小時帶你從芳療小白變斜槓高手',
     tag: '調香師',
     image: '/images/activity-2.png',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://weekielife.com/blog/fca-essential-oil-perfumer-beginner',
   },
   {
     title: '【拿下國際芳療師證書】美國 NAHA Level 1 芳療師認證課｜線上學習＋國際證書',
     tag: '芳療師',
     image: '/images/activity-3.png',
-    href: 'https://forms.gle/Sg3HV5Ec5J8eiQdV8',
+    href: 'https://weekielife.com/blog/naha-level1-aromatherapist-certification',
   },
 ];
 

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const BOOKING_URL = 'https://calendly.com/tingwenlin/1-1';
+const BOOKING_URL = 'https://calendly.com/tingwenlin/1-1?month=2026-07';
 
 const dropdownItems = [
   { label: '療癒師認證課', href: '/course#healing-course' },

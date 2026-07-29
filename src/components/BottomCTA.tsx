@@ -70,7 +70,7 @@ export default function BottomCTA() {
 
         {/* CTA Button */}
         <a
-          href="https://calendly.com/tingwenlin/1-1"
+          href="https://calendly.com/tingwenlin/1-1?month=2026-07"
           target="_blank"
           rel="noopener noreferrer"
           style={{

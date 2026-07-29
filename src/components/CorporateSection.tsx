@@ -4,19 +4,19 @@ const services = [
   {
     title: '品牌香氛產品設計',
     desc: '用香氛打造品牌關鍵記憶點，提供從設計香氛到量產產品服務，打造企業品牌創造獨特競爭力',
-    href: 'https://lin.ee/inhealingtw',
+    href: 'https://line.me/R/ti/p/@133hvsdc',
     image: '/images/Image (4).png',
   },
   {
     title: '企業調香講座',
     desc: '為客戶或員工來場有質感的法式調香，讓香氛展開與自己對話的療癒時光',
-    href: 'https://lin.ee/inhealingtw',
+    href: 'https://line.me/R/ti/p/@133hvsdc',
     image: '/images/Image (5).png',
   },
   {
     title: '企業培訓自我成長',
     desc: '讓香氛來引領，察覺情緒找到平行，從香氛找到自癒力，提升工作效率與身心靈健康',
-    href: 'https://lin.ee/inhealingtw',
+    href: 'https://line.me/R/ti/p/@133hvsdc',
     image: '/images/Image (6).png',
   },
 ];
