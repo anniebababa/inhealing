@@ -92,10 +92,16 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .cg-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 320px 220px 220px;
+    grid-template-rows: 280px 200px 200px;
   }
   .cg-left {
     grid-row: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .cg-grid {
+    grid-template-rows: 240px 180px 180px;
   }
 }
 
@@ -276,23 +282,58 @@ a { text-decoration: none; color: inherit; }
     height: var(--header-h-mobile);
   }
   .hd-inner {
-    padding: 0 20px;
+    padding: 0 16px;
   }
   .hd-logo-link {
     width: auto;
     height: auto;
   }
   .hd-logo-link img {
-    width: 112px !important;
+    width: 100px !important;
   }
+  /* Show full nav on mobile */
   .hd-nav {
-    display: none;
+    display: flex;
+    gap: 8px;
   }
   .hd-burger {
-    display: flex;
+    display: none;
+  }
+  .hd-course-btn {
+    font-size: 13px;
+    padding: 8px 2px;
+    gap: 4px;
+    letter-spacing: 0.02em;
+  }
+  .hd-book-btn {
+    font-size: 12px;
+    padding: 0 12px;
+    min-width: 68px;
+    height: 34px;
+    letter-spacing: 0.04em;
+  }
+  /* Mobile dropdown — full-width below header */
+  .hd-course-wrap {
+    position: static;
+  }
+  .hd-dropdown {
+    position: absolute;
+    top: var(--header-h-mobile);
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 500;
+  }
+  .hd-dropdown-item {
+    text-align: center;
+    font-size: 15px;
+    padding: 18px 20px;
+    white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .hd-mobile-menu {
-    top: var(--header-h-mobile);
+    display: none;
   }
 }
 
@@ -404,20 +445,22 @@ a { text-decoration: none; color: inherit; }
 
 /* ── 768px ── */
 @media (max-width: 768px) {
-  .hero-section { height: 480px; }
-  .hero-logo { top: calc(100% - 75px); width: 150px; height: 150px; }
-  .hero-text-band { padding: 36px 20px; }
+  .hero-section { height: 530px; }
+  .hero-logo { top: calc(100% - 88px); width: 176px; height: 176px; }
+  .hero-text-band { padding: 32px 24px; }
   .hero-title {
-    font-size: 26px;
+    font-size: 32px;
     white-space: normal;
-    max-width: 300px;
-    line-height: 1.45;
+    max-width: 360px;
+    line-height: 1.4;
+    margin-bottom: 12px;
   }
-  .hero-subtitle { font-size: 13px; }
+  .hero-subtitle { font-size: 15px; line-height: 1.8; }
 }
 
 /* ── 390px ── */
 @media (max-width: 390px) {
-  .hero-title { font-size: 22px; max-width: 260px; }
-  .hero-logo { width: 130px; height: 130px; }
+  .hero-section { height: 500px; }
+  .hero-title { font-size: 28px; max-width: 310px; }
+  .hero-logo { width: 160px; height: 160px; top: calc(100% - 80px); }
 }

@@ -127,7 +127,8 @@ export default function HealingSection() {
       <style>{`
         .heal-card:hover { background: rgba(255,255,255,0.16) !important; }
         @media (max-width: 640px) {
-          .heal-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .heal-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .heal-card { aspect-ratio: auto !important; padding: 36px 28px !important; }
         }
       `}</style>
     </section>

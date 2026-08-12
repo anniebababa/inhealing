@@ -23,9 +23,9 @@ const activities = [
 
 export default function ActivitiesSection() {
   return (
-    <section style={{ backgroundColor: '#ECE7DA', padding: '80px 0 96px' }}>
+    <section className="act-section" style={{ backgroundColor: '#ECE7DA', padding: '80px 0 96px' }}>
       <div className="container">
-        <h2 style={{
+        <h2 className="act-title" style={{
           fontSize: 'clamp(26px, 3.6vw, 44px)',
           fontWeight: '500',
           letterSpacing: '0.08em',
@@ -64,7 +64,7 @@ export default function ActivitiesSection() {
                   className="act-img"
                 />
               </div>
-              <h3 style={{
+              <h3 className="act-card-title" style={{
                 fontSize: '19px',
                 fontWeight: '400',
                 letterSpacing: '0.03em',
@@ -113,7 +113,10 @@ export default function ActivitiesSection() {
           .act-grid { gap: 24px !important; }
         }
         @media (max-width: 640px) {
-          .act-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .act-section { padding: 56px 0 64px !important; }
+          .act-title { font-size: 26px !important; margin-bottom: 36px !important; }
+          .act-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .act-card-title { font-size: 16px !important; }
         }
       `}</style>
     </section>

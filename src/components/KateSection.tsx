@@ -61,7 +61,7 @@ export default function KateSection() {
             講師介紹
           </p>
 
-          <h2 style={{
+          <h2 className="kate-h2" style={{
             fontSize: '38px',
             fontWeight: '500',
             letterSpacing: '0.03em',
@@ -73,7 +73,7 @@ export default function KateSection() {
             Kate 老師
           </h2>
 
-          <p style={{
+          <p className="kate-tagline" style={{
             fontSize: '20px',
             fontWeight: '600',
             color: '#38290F',
@@ -85,7 +85,7 @@ export default function KateSection() {
             當香氛成為語言，她是那位溫柔卻堅定的翻譯者
           </p>
 
-          <p style={{
+          <p className="kate-bio" style={{
             fontSize: '17px',
             fontWeight: '400',
             color: '#38290F',
@@ -93,7 +93,7 @@ export default function KateSection() {
             lineHeight: '1.7',
             marginBottom: '32px',
           }}>
-            在課堂中，你學到的不僅是芳療與調香技術，更是一種與自己<br />和世界對話的生活方式。Kate 老師以紮實的實證背景與溫柔<br />引導，陪伴超過百位學員打造屬於自己的香氣斜槓人生。
+            在課堂中，你學到的不僅是芳療與調香技術，更是一種與自己和世界對話的生活方式。Kate 老師以紮實的實證背景與溫柔引導，陪伴超過百位學員打造屬於自己的香氣斜槓人生。
           </p>
 
           <p style={{
@@ -148,9 +148,18 @@ export default function KateSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .kate-upper { grid-template-columns: 1fr !important; }
-          .kate-img-wrap { min-height: 380px !important; }
-          .kate-info { padding: 40px 24px !important; }
+          /* Switch to flex so order works */
+          .kate-upper {
+            display: flex !important;
+            flex-direction: column !important;
+          }
+          /* Text first */
+          .kate-info { order: 1; padding: 36px 20px 28px !important; }
+          /* Photo second */
+          .kate-img-wrap { order: 2; min-height: 420px !important; }
+          .kate-h2 { font-size: 28px !important; }
+          .kate-tagline { font-size: 16px !important; }
+          .kate-bio { font-size: 15px !important; }
         }
       `}</style>
     </section>

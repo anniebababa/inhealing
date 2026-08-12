@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function AchievementSection() {
   return (
-    <section className="brand-belief-section" style={{ padding: '80px 0 96px' }}>
+    <section className="brand-belief-section ach-section" style={{ padding: '80px 0 96px' }}>
       <div className="container">
         <div style={{
           display: 'grid',
@@ -23,7 +23,7 @@ export default function AchievementSection() {
             }}>
               我們相信，每個人都值得一段<br />香氛療癒旅程
             </h2>
-            <p style={{
+            <p className="ach-body" style={{
               fontSize: '18px',
               fontWeight: '400',
               color: 'var(--body-brown)',
@@ -34,12 +34,12 @@ export default function AchievementSection() {
             }}>
               『你喜歡的香氛，也許正是你靈魂的提示』<br />
               讓香氛療癒陪你遇見無限可能的自己。<br /><br />
-              在創業、斜槓、追求財富自由的路上，透過香氛療癒讓你擁有<br />滿滿的正能量與動力，陪你找到下一個可能。
+              在創業、斜槓、追求財富自由的路上，透過香氛療癒讓你擁有滿滿的正能量與動力，陪你找到下一個可能。
             </p>
           </div>
 
           {/* Right: image */}
-          <div style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden', marginLeft: '-160px', width: '88%' }}>
+          <div className="ach-img" style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden', marginLeft: '-160px', width: '88%' }}>
             <Image
               src="/images/Image (1)拷貝.png"
               alt="香氛療癒"
@@ -51,9 +51,22 @@ export default function AchievementSection() {
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          /* logo overlaps 88px into this section — need clearance */
+          .ach-section { padding: 112px 0 64px !important; }
+          .ach-grid { gap: 40px !important; }
+          .ach-img { margin-left: -80px !important; }
+          .ach-body { font-size: 16px !important; }
+        }
         @media (max-width: 640px) {
-          .ach-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
-          .ach-grid > div:last-child { aspect-ratio: 3/2 !important; }
+          .ach-section { padding: 104px 0 56px !important; }
+          .ach-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .ach-img { margin-left: 0 !important; width: 100% !important; aspect-ratio: 4/3 !important; }
+          .ach-body { font-size: 15px !important; margin-bottom: 0 !important; }
+        }
+        @media (max-width: 390px) {
+          /* logo overlap = 80px on 390px screens */
+          .ach-section { padding: 96px 0 52px !important; }
         }
       `}</style>
     </section>

@@ -25,7 +25,7 @@ export default function CorporateSection() {
   return (
     <section style={{ backgroundColor: 'var(--cream)' }}>
       {/* Title */}
-      <div style={{ textAlign: 'center', padding: '72px 20px 48px' }}>
+      <div className="corp-title-block" style={{ padding: '72px 20px 48px', textAlign: 'center' }}>
         <h2 style={{
           fontSize: 'clamp(22px, 3vw, 36px)',
           fontWeight: '500',
@@ -48,34 +48,27 @@ export default function CorporateSection() {
         </p>
       </div>
 
-      {/* 3-column image row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0' }} className="corp-img-grid">
-        {services.map(s => (
-          <div key={s.title} style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+      {/*
+        Desktop: grid-auto-flow:column → images fill row 1, texts fill row 2
+        Mobile:  grid-auto-flow:row   → interleaved image→text→image→text
+      */}
+      <div className="corp-grid">
+        {services.flatMap(s => [
+          <div key={`img-${s.title}`} className="corp-img-cell">
             <Image
               src={s.image}
               alt={s.title}
               fill
               style={{ objectFit: 'cover', objectPosition: 'center' }}
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
-          </div>
-        ))}
-      </div>
-
-      {/* 3-column text row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2px' }} className="corp-txt-grid">
-        {services.map(s => (
+          </div>,
           <a
-            key={s.title}
+            key={`txt-${s.title}`}
             href={s.href}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              padding: '28px 32px 36px',
-              textDecoration: 'none',
-              backgroundColor: '#ECE7DA',
-            }}
+            className="corp-txt-cell"
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
               <h3 style={{
@@ -98,14 +91,39 @@ export default function CorporateSection() {
             }}>
               {s.desc}
             </p>
-          </a>
-        ))}
+          </a>,
+        ])}
       </div>
 
       <style>{`
+        .corp-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-flow: column;
+          gap: 0;
+        }
+        .corp-img-cell {
+          position: relative;
+          aspect-ratio: 4/3;
+          overflow: hidden;
+        }
+        .corp-txt-cell {
+          display: block;
+          padding: 28px 32px 36px;
+          text-decoration: none;
+          background-color: #ECE7DA;
+        }
         @media (max-width: 768px) {
-          .corp-img-grid { grid-template-columns: 1fr !important; }
-          .corp-txt-grid { grid-template-columns: 1fr !important; }
+          .corp-title-block { text-align: left !important; padding: 48px 20px 32px !important; }
+          .corp-grid {
+            grid-template-columns: 1fr;
+            grid-auto-flow: row;
+          }
+          .corp-txt-cell {
+            padding: 20px 20px 28px;
+            font-size: 15px;
+          }
+          .corp-txt-cell h3 { font-size: 18px !important; }
         }
       `}</style>
     </section>

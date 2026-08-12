@@ -100,7 +100,7 @@ function FaqAccordion() {
               textAlign: 'left' as const,
             }}
           >
-            <span style={{
+            <span className="faq-q" style={{
               fontSize: '20px',
               letterSpacing: '0.04em',
               lineHeight: '1.6',
@@ -122,7 +122,7 @@ function FaqAccordion() {
             </span>
           </button>
           {open === i && (
-            <div style={{
+            <div className="faq-answer" style={{
               paddingBottom: '22px',
               fontSize: '18px',
               fontWeight: '400',
@@ -246,7 +246,7 @@ export default function CoursePage() {
                   探索課程
                 </a>
               </div>
-              <div style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', transform: 'translateX(-15%)' }}>
+              <div className="ch-img" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', transform: 'translateX(-15%)' }}>
                 <Image
                   src="/images/course-theta.png"
                   alt="課程介紹"
@@ -304,7 +304,7 @@ export default function CoursePage() {
                   {/* Gradient overlay */}
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,6,2,0.82) 0%, rgba(10,6,2,0.3) 50%, transparent 70%)' }} />
                   {/* All text overlaid */}
-                  <div style={{
+                  <div className="csg-overlay" style={{
                     position: 'absolute',
                     top: 'calc(45% + 140px)',
                     left: 0,
@@ -391,7 +391,7 @@ export default function CoursePage() {
             </div>
 
             {/* Course info text */}
-            <div style={{ marginLeft: '129px', marginTop: '29px', width: '620px' }}>
+            <div className="theta-info" style={{ marginLeft: '129px', marginTop: '29px', width: '620px' }}>
               {/* Title + badge */}
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <h2 style={{
@@ -468,9 +468,9 @@ export default function CoursePage() {
                 items: ['辨識小我、高我及植物主','時刻連結無條件的愛','快速信念挖掘','釋放恐懼'],
               },
             ]).map((group) => (
-              <div key={group.title} style={{ position: 'absolute', top: `${group.groupTop}px`, left: 0, right: 0 }}>
+              <div key={group.title} className="theta-group" style={{ position: 'absolute', top: `${group.groupTop}px`, left: 0, right: 0 }}>
                 {/* Timeline node */}
-                <div style={{
+                <div className="theta-node" style={{
                   position: 'absolute',
                   left: '-11px',
                   top: `${group.nodeTop}px`,
@@ -484,7 +484,7 @@ export default function CoursePage() {
                 }} />
 
                 {/* Content */}
-                <div style={{ marginLeft: '-11px', width: '500px' }}>
+                <div className="theta-content" style={{ marginLeft: '-11px', width: '500px' }}>
                   <h3 style={{
                     fontSize: '23px', fontWeight: 700, lineHeight: 1.3,
                     color: '#c09d17', margin: '5px 0 14px 43px',
@@ -520,19 +520,60 @@ export default function CoursePage() {
                 grid-template-columns: 1fr !important;
                 min-height: auto !important;
               }
+              /* Left column: image full width */
               .theta-section > div:first-child > div:first-child {
                 width: 100% !important;
                 height: 260px !important;
                 margin-left: 0 !important;
+                margin-top: 0 !important;
               }
+              /* Left column: text block */
+              .theta-info {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+                width: auto !important;
+                padding-bottom: 8px !important;
+              }
+              /* Right column: horizontal scroll carousel */
               .theta-section > div:last-child {
                 position: static !important;
-                padding: 40px 20px 60px;
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding: 24px 20px 36px !important;
+                gap: 12px !important;
+                scrollbar-width: none !important;
               }
-              .theta-section > div:last-child > div[style*="position: absolute"] {
+              .theta-section > div:last-child::-webkit-scrollbar { display: none; }
+              /* Vertical timeline line: hide */
+              .theta-section > div:last-child > div:first-child {
+                display: none !important;
+              }
+              /* Each group: carousel card (~2 visible at once) */
+              .theta-group {
                 position: static !important;
-                margin-bottom: 40px;
+                flex: 0 0 calc(50vw - 26px) !important;
+                scroll-snap-align: start !important;
+                border-left: 2px solid #d6aa00 !important;
+                padding: 14px 12px 18px 14px !important;
+                margin-bottom: 0 !important;
+                min-width: 0 !important;
               }
+              .theta-node { display: none !important; }
+              .theta-content {
+                margin-left: 0 !important;
+                width: 100% !important;
+              }
+              .theta-content h3 {
+                font-size: 16px !important;
+                margin: 4px 0 10px 0 !important;
+              }
+              .theta-content ul {
+                margin-left: 6px !important;
+                font-size: 12px !important;
+              }
+              .theta-content a { margin-left: 0 !important; }
             }
           `}</style>
         </section>
@@ -579,107 +620,117 @@ export default function CoursePage() {
                 </div>
 
                 {/* Sub-course 1 */}
-                <div style={{ marginBottom: '48px' }}>
-                  <h3 style={{
-                    fontSize: '22px',
-                    fontWeight: 700,
-                    color: '#38290F',
-                    letterSpacing: '0.04em',
-                    marginBottom: '16px',
-                    fontFamily: 'var(--font-noto-serif-tc), serif',
-                  }}>法國 F.C.A. 精油調香師入門課</h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '18px' }}>
-                    {[
-                      '規劃並製作 7 種以上手作精油商品\n（萬用膏、空間噴霧、按摩滾珠瓶、保養油等）',
-                      '設計專屬高品質天然香氛配方',
-                      '辨識 20 種精油香氛特徵與正面效用',
-                      '創造兼具美感與功能的香氛產品',
-                    ].map(item => (
-                      <div key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#38290F', fontSize: '16px', flexShrink: 0 }}>・</span>
-                        <span style={{ fontSize: '16px', color: '#38290F', lineHeight: '1.8', letterSpacing: '0.02em', fontFamily: 'var(--font-noto-sans-tc), sans-serif', whiteSpace: 'pre-line' }}>{item}</span>
-                      </div>
-                    ))}
+                <div style={{ marginBottom: '48px' }} className="cat-c1-wrap">
+                  <div className="cat-c1-text">
+                    <h3 style={{
+                      fontSize: '22px',
+                      fontWeight: 700,
+                      color: '#38290F',
+                      letterSpacing: '0.04em',
+                      marginBottom: '16px',
+                      fontFamily: 'var(--font-noto-serif-tc), serif',
+                    }}>法國 F.C.A. 精油調香師入門課</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '18px' }}>
+                      {[
+                        '規劃並製作 7 種以上手作精油商品\n（萬用膏、空間噴霧、按摩滾珠瓶、保養油等）',
+                        '設計專屬高品質天然香氛配方',
+                        '辨識 20 種精油香氛特徵與正面效用',
+                        '創造兼具美感與功能的香氛產品',
+                      ].map(item => (
+                        <div key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                          <span style={{ color: '#38290F', fontSize: '16px', flexShrink: 0 }}>・</span>
+                          <span style={{ fontSize: '16px', color: '#38290F', lineHeight: '1.8', letterSpacing: '0.02em', fontFamily: 'var(--font-noto-sans-tc), sans-serif', whiteSpace: 'pre-line' }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '25px', gap: '12px' }}>
+                      <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '18px', fontWeight: 700, color: '#a07a00', textDecoration: 'none' }}>
+                        了解更多
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+                          <circle cx="9" cy="9" r="8" stroke="#a07a00" strokeWidth="1.5"/>
+                          <path d="M6 9h6M10.5 6.5l2.5 2.5-2.5 2.5" stroke="#a07a00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </a>
+                      <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-block',
+                          padding: '8px 24px',
+                          border: '1px solid #38290F',
+                          backgroundColor: 'transparent',
+                          color: '#38290F',
+                          fontSize: '16px',
+                          letterSpacing: '0.08em',
+                          textDecoration: 'none',
+                          fontFamily: 'var(--font-noto-sans-tc), sans-serif',
+                        }}>立即預約</a>
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '25px', gap: '12px' }}>
-                    <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '18px', fontWeight: 700, color: '#a07a00', textDecoration: 'none' }}>
-                      了解更多
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
-                        <circle cx="9" cy="9" r="8" stroke="#a07a00" strokeWidth="1.5"/>
-                        <path d="M6 9h6M10.5 6.5l2.5 2.5-2.5 2.5" stroke="#a07a00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                    <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
-                      style={{
-                        display: 'inline-block',
-                        padding: '8px 24px',
-                        border: '1px solid #38290F',
-                        backgroundColor: 'transparent',
-                        color: '#38290F',
-                        fontSize: '16px',
-                        letterSpacing: '0.08em',
-                        textDecoration: 'none',
-                        fontFamily: 'var(--font-noto-sans-tc), sans-serif',
-                      }}>立即預約</a>
+                  <div className="cat-c1-img cat-inline-img" style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
+                    <Image src="/images/testimonial-2.png" alt="調香師課程" fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
                   </div>
                 </div>
 
                 {/* Sub-course 2 */}
-                <div>
-                  <h3 style={{
-                    fontSize: '22px',
-                    fontWeight: 700,
-                    color: '#38290F',
-                    letterSpacing: '0.04em',
-                    marginBottom: '16px',
-                    fontFamily: 'var(--font-noto-serif-tc), serif',
-                  }}>韓國 KDCA 二日班調香師</h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '18px' }}>
-                    {[
-                      '香水的歷史與背景',
-                      '香氣調性搭配',
-                      '香水原料與協同',
-                      '講香流程',
-                      '香氣原料庫建立',
-                      '科學調香系統',
-                      '芳香療法應用',
-                      '實際調香演練',
-                      '體驗課程經驗分享',
-                    ].map(item => (
-                      <div key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#38290F', fontSize: '16px', flexShrink: 0 }}>・</span>
-                        <span style={{ fontSize: '16px', color: '#38290F', lineHeight: '1.8', letterSpacing: '0.02em', fontFamily: 'var(--font-noto-sans-tc), sans-serif', whiteSpace: 'pre-line' }}>{item}</span>
-                      </div>
-                    ))}
+                <div className="cat-c2-wrap">
+                  <div className="cat-c2-img cat-inline-img" style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                    <Image src="/images/testimonial-3.png" alt="調香師課程2" fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '25px', gap: '12px' }}>
-                    <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '18px', fontWeight: 700, color: '#a07a00', textDecoration: 'none' }}>
-                      了解更多
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
-                        <circle cx="9" cy="9" r="8" stroke="#a07a00" strokeWidth="1.5"/>
-                        <path d="M6 9h6M10.5 6.5l2.5 2.5-2.5 2.5" stroke="#a07a00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                    <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
-                      style={{
-                        display: 'inline-block',
-                        padding: '8px 24px',
-                        border: '1px solid #38290F',
-                        backgroundColor: 'transparent',
-                        color: '#38290F',
-                        fontSize: '16px',
-                        letterSpacing: '0.08em',
-                        textDecoration: 'none',
-                        fontFamily: 'var(--font-noto-sans-tc), sans-serif',
-                      }}>立即預約</a>
+                  <div className="cat-c2-text">
+                    <h3 style={{
+                      fontSize: '22px',
+                      fontWeight: 700,
+                      color: '#38290F',
+                      letterSpacing: '0.04em',
+                      marginBottom: '16px',
+                      fontFamily: 'var(--font-noto-serif-tc), serif',
+                    }}>韓國 KDCA 二日班調香師</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '18px' }}>
+                      {[
+                        '香水的歷史與背景',
+                        '香氣調性搭配',
+                        '香水原料與協同',
+                        '講香流程',
+                        '香氣原料庫建立',
+                        '科學調香系統',
+                        '芳香療法應用',
+                        '實際調香演練',
+                        '體驗課程經驗分享',
+                      ].map(item => (
+                        <div key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                          <span style={{ color: '#38290F', fontSize: '16px', flexShrink: 0 }}>・</span>
+                          <span style={{ fontSize: '16px', color: '#38290F', lineHeight: '1.8', letterSpacing: '0.02em', fontFamily: 'var(--font-noto-sans-tc), sans-serif', whiteSpace: 'pre-line' }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '25px', gap: '12px' }}>
+                      <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '18px', fontWeight: 700, color: '#a07a00', textDecoration: 'none' }}>
+                        了解更多
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+                          <circle cx="9" cy="9" r="8" stroke="#a07a00" strokeWidth="1.5"/>
+                          <path d="M6 9h6M10.5 6.5l2.5 2.5-2.5 2.5" stroke="#a07a00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </a>
+                      <a href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-block',
+                          padding: '8px 24px',
+                          border: '1px solid #38290F',
+                          backgroundColor: 'transparent',
+                          color: '#38290F',
+                          fontSize: '16px',
+                          letterSpacing: '0.08em',
+                          textDecoration: 'none',
+                          fontFamily: 'var(--font-noto-sans-tc), sans-serif',
+                        }}>立即預約</a>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Right: two stacked images */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', alignSelf: 'end' }}>
+              <div className="cat-imgs" style={{ display: 'flex', flexDirection: 'column', gap: '0px', alignSelf: 'end' }}>
                 <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', width: '120%' }}>
                   <Image src="/images/testimonial-2.png" alt="調香師課程" fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
                 </div>
@@ -871,7 +922,7 @@ export default function CoursePage() {
               </a>
 
               {/* Right: two stacked small cards */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', marginLeft: '-30px' }}>
+              <div className="lc-right" style={{ display: 'flex', flexDirection: 'column', gap: '28px', marginLeft: '-30px' }}>
                 {[
                   {
                     image: '/images/activity-2.png',
@@ -885,7 +936,8 @@ export default function CoursePage() {
                   },
                 ].map(item => (
                   <a key={item.tag} href="https://forms.gle/Sg3HV5Ec5J8eiQdV8" target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'grid', gridTemplateColumns: '48% 52%', gap: '14px', color: 'inherit', textDecoration: 'none', alignItems: 'start' }}>
+                    className="lc-item"
+                    style={{ display: 'grid', gridTemplateColumns: '45% 55%', gap: '14px', color: 'inherit', textDecoration: 'none', alignItems: 'start' }}>
                     <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
                       <Image src={item.image} alt={item.title} fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
                     </div>
@@ -909,7 +961,7 @@ export default function CoursePage() {
         </section>
 
         {/* ── Testimonials ───────────────────────────── */}
-        <section style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#D5C9B8', padding: '88px 0 108px' }}>
+        <section className="tm-section" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#D5C9B8', padding: '88px 0 108px' }}>
           {/* Background texture image */}
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <Image src="/images/course-detail-4.png" alt="" fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
@@ -973,7 +1025,7 @@ export default function CoursePage() {
 
           <style>{`
             @media (max-width: 768px) {
-              .tm-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+              .tm-grid { grid-template-columns: 1fr !important; }
             }
           `}</style>
         </section>
@@ -1008,11 +1060,6 @@ export default function CoursePage() {
               </div>
             </div>
           </div>
-          <style>{`
-            @media(max-width:768px) {
-              .faq-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-            }
-          `}</style>
         </section>
 
         <BottomCTA />
@@ -1020,16 +1067,58 @@ export default function CoursePage() {
       <Footer />
 
       <style>{`
-        @media(max-width:640px) {
-          .cat-grid { grid-template-columns: 1fr !important; }
-          .cat-grid > div:first-child { order: -1; }
-          .ch-grid { grid-template-columns: 1fr !important; }
-          .ch-grid > div:last-child { aspect-ratio: 3/2 !important; }
-          .lc-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .tm-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-          .csg-grid { grid-template-columns: 1fr !important; }
-        }
         .csg-card:hover .csg-img { transform: scale(1.05); }
+        /* Hide perfumer inline images on desktop */
+        .cat-inline-img { display: none; }
+
+        /* ── 768px ── */
+        @media(max-width:768px) {
+          .ch-grid { gap: 32px !important; }
+          .ch-img { transform: none !important; }
+          .cat-grid { gap: 40px !important; }
+          .cat-imgs > div { width: 100% !important; }
+          .lc-right { margin-left: 0 !important; }
+          .faq-q { font-size: 16px !important; }
+          /* csg-overlay: start higher so text fits */
+          .csg-overlay {
+            top: 52% !important;
+            padding: 0 16px 20px !important;
+          }
+          /* csg card: taller so content fits */
+          .csg-card > div { aspect-ratio: 2/3 !important; }
+          /* Testimonials: single column */
+          .tm-grid { grid-template-columns: 1fr !important; gap: 44px !important; }
+          .tm-section { padding: 56px 0 72px !important; }
+          /* FAQ: full width */
+          .faq-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .faq-answer { font-size: 15px !important; }
+        }
+
+        /* ── 640px ── */
+        @media(max-width:640px) {
+          /* Course hero */
+          .ch-grid { grid-template-columns: 1fr !important; }
+          .ch-grid > div:last-child { aspect-ratio: 3/2 !important; transform: none !important; }
+          /* Perfumer */
+          .cat-grid { grid-template-columns: 1fr !important; }
+          .cat-imgs { display: none !important; }
+          .cat-inline-img { display: block !important; }
+          /* Course 1: text left, image right */
+          .cat-c1-wrap { display: grid !important; grid-template-columns: 58% 42% !important; gap: 12px !important; align-items: start !important; }
+          .cat-c1-text h3 { font-size: 17px !important; }
+          .cat-c1-text span[style] { font-size: 14px !important; }
+          /* Course 2: image left, text right */
+          .cat-c2-wrap { display: grid !important; grid-template-columns: 36% 64% !important; gap: 12px !important; align-items: start !important; }
+          .cat-c2-text h3 { font-size: 17px !important; }
+          .cat-c2-text span[style] { font-size: 14px !important; }
+          /* Latest courses: large card full width, small cards keep image+text side-by-side */
+          .lc-main { grid-template-columns: 1fr !important; }
+          .lc-main > a > div { width: 100% !important; }
+          /* Course selection grid */
+          .csg-grid { grid-template-columns: 1fr !important; }
+          /* Theta info */
+          .theta-info { margin-left: 20px !important; margin-right: 20px !important; width: auto !important; }
+        }
       `}</style>
     </>
   );
