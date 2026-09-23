@@ -99,6 +99,7 @@ export default function CorporateSection() {
         .corp-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: auto auto;
           grid-auto-flow: column;
           gap: 0;
         }
