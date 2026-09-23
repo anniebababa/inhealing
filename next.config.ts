@@ -1,19 +1,12 @@
 import type { NextConfig } from 'next';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig: NextConfig = {
-  ...(isProd && { output: 'export' }),
+  output: 'export',
   images: {
     unoptimized: true,
   },
-  ...(isProd && {
-    basePath: '/inhealing',
-    assetPrefix: '/inhealing/',
-  }),
-  turbopack: {
-    root: process.cwd(),
-  },
+  basePath: '/inhealing',
+  assetPrefix: '/inhealing/',
 };
 
 export default nextConfig;
