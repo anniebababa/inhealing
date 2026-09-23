@@ -156,7 +156,12 @@ export default function KateSection() {
           /* Text first */
           .kate-info { order: 1; padding: 36px 20px 28px !important; }
           /* Photo second */
-          .kate-img-wrap { order: 2; min-height: 420px !important; }
+          .kate-img-wrap { order: 2; min-height: 360px !important; }
+          .kate-img-wrap img {
+            object-fit: cover !important;
+            object-position: top center !important;
+            transform: none !important;
+          }
           .kate-h2 { font-size: 28px !important; }
           .kate-tagline { font-size: 16px !important; }
           .kate-bio { font-size: 15px !important; }
